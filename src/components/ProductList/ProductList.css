@@ -7,3 +7,18 @@
   max-width: 1200px;
   justify-content: center;
 }
+
+.productlist__loading {
+  margin: 200px auto;
+  text-align: center;
+  color: #fff;
+  font-size: 40px;
+}
+
+@media (max-width: 769px) {
+  .productlist__grid {
+    grid-template-columns: repeat(auto-fill, 207px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+}

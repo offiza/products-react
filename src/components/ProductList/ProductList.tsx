@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useProducts } from '../../hooks/useProducts';
 import { Product } from '../Product/Product';
 import './ProductList.css';
 
 export const ProductList = () => {
-  const [products, setProducts] = useState(['22', '34', 'dd', '22', '34', 'dd']);
+  const { products, isLoading } = useProducts();
+
+  if (isLoading) {
+    return (
+      <div className='productlist__loading'>
+        <p>Loading...</p>
+      </div>
+    )
+  }
 
   return (
     <div className='productlist__grid'>
-      {products.map((product) => {
-        return <Product />
+      {products && products.map((product) => {
+        return <Product key={product.name} product={product} />
       })}
     </div>
   )
