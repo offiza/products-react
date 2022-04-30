@@ -4,9 +4,10 @@ import './Product.css';
 
 interface ProductProps {
   product: ProductType;
+  setCurrentProduct: (event: any, product: ProductType) => void;
 }
 
-export const Product: FC<ProductProps> = ({ product }) => {
+export const Product: FC<ProductProps> = ({ product, setCurrentProduct }) => {
   return (
     <div className='product__container'>
       <div>
@@ -18,7 +19,8 @@ export const Product: FC<ProductProps> = ({ product }) => {
           <p className='product__dollar'>$</p>
           <p className='product__price'>{product.price}</p>
         </div>
-        <button className='product__button' >
+        <button className='product__button'
+          onClick={(event: any) => setCurrentProduct(event, product)}>
           <p className='product__button-content'>Buy</p>
         </button>
       </div>
