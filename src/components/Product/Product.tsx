@@ -11,7 +11,7 @@ export const Product: FC<ProductProps> = ({ product, setCurrentProduct }) => {
   return (
     <div className='product__container'>
       <div>
-        <p className='product__categories'>{product.category}</p>
+        <p className='product__category'>{product.category}</p>
         <p className='product__name'>{product.name}</p>
       </div>
       <div className='product__content'>
