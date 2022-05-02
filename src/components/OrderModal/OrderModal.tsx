@@ -28,7 +28,8 @@ export const OrderModal: FC<OrderModalProps> = ({ product, onClose }) => {
           <input className='ordermodal__button' type="submit" value='Order' />
         </form>
       </div>
-      <div className='ordermodal__close' onClick={onClose} ></div>
+      <div className='ordermodal__close' onClick={onClose}></div>
+      <div className='ordermodal__close-btn' onClick={onClose}>&#10006;</div>
     </div>
   )
 }
