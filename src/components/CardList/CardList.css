@@ -1,6 +1,6 @@
 .productlist__grid {
   display: grid;
-  margin: 200px auto;
+  margin: 100px auto;
   margin-bottom: 0;
   grid-template-columns: repeat(auto-fill, 352px);
   grid-column-gap: 30px;
@@ -12,7 +12,7 @@
 .productlist__loading {
   margin: 200px auto;
   text-align: center;
-  color: #fff;
+  color: #000;
   font-size: 40px;
 }
 

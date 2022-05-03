@@ -8,7 +8,7 @@ export const NavBar = () => {
       <div className='navbar'>
         <div>
           <p className='navbar__text'>
-            Products by Offiza
+            Cards by Offiza
           </p>
         </div>
         <div>
@@ -23,7 +23,7 @@ export const NavBar = () => {
             <li className='navbar__list-item'>
               <Link to='/products' className='navbar__text'>
                 <p>
-                  Products
+                  Cards
                 </p>
               </Link>
             </li>

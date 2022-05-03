@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
-import ProductType from '../../types/product';
-import { Product } from '../Product/Product';
-import './ProductList.css';
+import CardType from '../../types/product';
+import { Card } from '../Card/Card';
+import './CardList.css';
 
-interface ProductListProps {
-  products: ProductType[] | null;
+interface CardListProps {
+  products: CardType[] | null;
   isLoading: boolean;
-  setCurrentProduct: (event: any, product: ProductType) => void
+  setCurrentCard: (event: any, product: CardType) => void
 }
 
-export const ProductList: FC<ProductListProps> = ({ products, isLoading, setCurrentProduct }) => {
+export const CardList: FC<CardListProps> = ({ products, isLoading, setCurrentCard }) => {
 
   if (isLoading) {
     return (
@@ -30,7 +30,7 @@ export const ProductList: FC<ProductListProps> = ({ products, isLoading, setCurr
   return (
     <div className='productlist__grid'>
       {products && products.map((product) => {
-        return <Product key={product.name} product={product} setCurrentProduct={setCurrentProduct}/>
+        return <Card key={product.name} product={product} setCurrentCard={setCurrentCard}/>
       })}
     </div>
   )

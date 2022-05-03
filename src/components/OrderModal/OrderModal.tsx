@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import ProductType from '../../types/product';
+import CardType from '../../types/product';
 import './OrderModal.css';
-import '../Product/Product.css';
+import '../Card/Card.css';
 import { useInput } from '../../hooks/useInput';
 
 interface OrderModalProps {
-  product: ProductType;
+  product: CardType;
   onClose: () => void;
 }
 
