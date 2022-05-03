@@ -69,6 +69,14 @@
   outline: none;
 }
 
+.ordermodal__input-success {
+  border: 1px solid #4BCFA0;
+}
+
+.ordermodal__input-error {
+  border: 1px solid #E43F3F;
+}
+
 .ordermodal__button {
   border-radius: 16px;
   padding: 18px 14px;
@@ -104,8 +112,8 @@
   height: 40px;
   background-color: #F2F2F2;
   position: relative;
-  left: -22px;
-  top: -262px;
+  left: -26px;
+  top: -264px;
   z-index: 3;
   transition: .2s;
   user-select: none;
@@ -113,4 +121,15 @@
 
 .ordermodal__close-btn:hover {
   background-color: #dcdcdc;
+}
+
+.ordermodal__label{
+  text-align: start;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;  
+  letter-spacing: -0.02em;
+  margin: 0 0 10px 0;
+  color: #E43F3F;
 }
