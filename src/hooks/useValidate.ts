@@ -10,9 +10,9 @@ export const useValidate = (value: string | number, validations: ValidationType)
   const [regExpError, setRegExpError] = useState(false);
   const [stringOnlyError, setStringOnlyError] = useState(false);
   const [numberOnlyError, setNumberOnlyError] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-
-  useEffect(() => {
+  const validate = () => {
     for (const validation in validations) {
       switch (validation) {
         case 'isEmpty':
@@ -53,7 +53,19 @@ export const useValidate = (value: string | number, validations: ValidationType)
           break;
       }
     }
+  }
+
+  useEffect(() => {
+    validate();
   }, [value]);
+
+  useEffect(() => {
+    if (isEmptyError || lengthError || minLengthError || maxLengthError || numberOnlyError || stringOnlyError || regExpError)
+      return setIsError(true);
+
+    return setIsError(false);
+  }, [isEmptyError, lengthError, minLengthError, maxLengthError, numberOnlyError, stringOnlyError, regExpError])
+
 
   return {
     isEmptyError,
@@ -62,6 +74,8 @@ export const useValidate = (value: string | number, validations: ValidationType)
     regExpError,
     stringOnlyError,
     numberOnlyError,
-    lengthError
+    lengthError,
+    validate,
+    isError,
   }
 }

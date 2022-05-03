@@ -15,15 +15,22 @@ export const OrderModal: FC<OrderModalProps> = ({ product, onClose }) => {
     minLength: 2,
     stringOnly: true,
   });
-  const number = useInput(+380, {
+  const number = useInput('', {
     isEmpty: true,
     length: 12,
     numberOnly: true
   });
 
   const handleSubmit = (event: any) => {
-    console.log(`Name: ${name}\nNumber: ${number}`)
-    onClose();
+    event.preventDefault();
+
+    name.deepValidate();
+    number.deepValidate();
+
+    if (!name.isError && !number.isError) {
+      console.log(`Name: ${name.value}\nNumber: ${number.value}`)
+      onClose();
+    }
   };
 
   return (
@@ -45,17 +52,19 @@ export const OrderModal: FC<OrderModalProps> = ({ product, onClose }) => {
             placeholder='name'
             value={name.value}
             onChange={name.onChange}
-            onBlur={name.onBlur} />
-          {name.focus && name.errorMessage && <p className='ordermodal__label'>{name.errorMessage}</p>}
+            onBlur={name.onBlur}
+            onFocus={name.onFocus} />
+          {name.wasFocused && !name.focus && name.errorMessage && <p className='ordermodal__label'>{name.errorMessage}</p>}
           <input
             className='ordermodal__input'
             type='text'
             placeholder='number'
             value={number.value}
             onChange={number.onChange}
-            onBlur={number.onBlur} />
-          {number.focus && number.errorMessage && <p className='ordermodal__label'>{number.errorMessage}</p>}
-          <button className='ordermodal__button' type="submit" >Order</button>
+            onBlur={number.onBlur}
+            onFocus={number.onFocus} />
+          {number.wasFocused && !number.focus && number.errorMessage && <p className='ordermodal__label'>{number.errorMessage}</p>}
+          <button className='ordermodal__button' type="submit"><span>Order</span></button>
         </form>
       </div>
       <div className='ordermodal__close' onClick={onClose}></div>

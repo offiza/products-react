@@ -95,6 +95,12 @@
   cursor: pointer;
 }
 
+.ordermodal__button:hover span::after {
+  content: '→';
+  color: #fff;
+  padding-left: 10px;
+}
+
 .ordermodal__close {
   position: fixed;
   top: 0;
