@@ -13,8 +13,13 @@ export const useProducts = () => {
       .finally(() => setIsLoading(false))
   }, [])
 
+  const getCheapestProduct = () => {
+    return products?.reduce((prev, current) => prev.price < current.price ? prev : current)
+  }
+
   return {
     products,
     isLoading,
+    getCheapestProduct
   }
 }
