@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import ValidationType from '../types/validation';
+import React, { useEffect, useState } from "react";
+import ValidationType from "../types/validation";
 
-
-export const useValidate = (value: string | number, validations: ValidationType) => {
+export const useValidate = (
+  value: string | number,
+  validations: ValidationType
+) => {
   const [isEmptyError, setIsEmptyError] = useState(false);
   const [minLengthError, setMinLengthError] = useState(false);
   const [maxLengthError, setMaxLengthError] = useState(false);
@@ -15,57 +17,79 @@ export const useValidate = (value: string | number, validations: ValidationType)
   const validate = () => {
     for (const validation in validations) {
       switch (validation) {
-        case 'isEmpty':
-          value.toString().length === 0 ?
-            setIsEmptyError(true) : setIsEmptyError(false)
+        case "isEmpty":
+          value.toString().length === 0
+            ? setIsEmptyError(true)
+            : setIsEmptyError(false);
           break;
-        case 'minLength':
+        case "minLength":
           if (validations && validations.minLength) {
-            value.toString().length < validations.minLength ?
-              setMinLengthError(true) : setMinLengthError(false)
+            value.toString().length < validations.minLength
+              ? setMinLengthError(true)
+              : setMinLengthError(false);
           }
           break;
-        case 'maxLength':
+        case "maxLength":
           if (validations && validations.maxLength) {
-            value.toString().length < validations.maxLength ?
-              setMaxLengthError(true) : setMaxLengthError(false)
+            value.toString().length < validations.maxLength
+              ? setMaxLengthError(true)
+              : setMaxLengthError(false);
           }
           break;
-        case 'length':
+        case "length":
           if (validations && validations.length) {
-            value.toString().length === validations.length ?
-              setLengthError(false) : setLengthError(true)
+            value.toString().length === validations.length
+              ? setLengthError(false)
+              : setLengthError(true);
           }
           break;
-        case 'regExp':
+        case "regExp":
           if (validations && validations.regExp) {
-            validations.regExp.test(value.toString()) ?
-              setRegExpError(false) : setRegExpError(true)
+            validations.regExp.test(value.toString())
+              ? setRegExpError(false)
+              : setRegExpError(true);
           }
           break;
-        case 'stringOnly':
-          /^([а-яё]+|[a-z]+)$/i.test(value.toString()) ?
-            setStringOnlyError(false) : setStringOnlyError(true);
+        case "stringOnly":
+          /^([а-яё]+|[a-z]+)$/i.test(value.toString())
+            ? setStringOnlyError(false)
+            : setStringOnlyError(true);
           break;
-        case 'numberOnly':
-          /([0-9]+)$/i.test(value.toString()) ?
-            setNumberOnlyError(false) : setNumberOnlyError(true)
+        case "numberOnly":
+          /([0-9]+)$/i.test(value.toString())
+            ? setNumberOnlyError(false)
+            : setNumberOnlyError(true);
           break;
       }
     }
-  }
+  };
 
   useEffect(() => {
     validate();
   }, [value]);
 
   useEffect(() => {
-    if (isEmptyError || lengthError || minLengthError || maxLengthError || numberOnlyError || stringOnlyError || regExpError)
+    if (
+      isEmptyError ||
+      lengthError ||
+      minLengthError ||
+      maxLengthError ||
+      numberOnlyError ||
+      stringOnlyError ||
+      regExpError
+    )
       return setIsError(true);
 
     return setIsError(false);
-  }, [isEmptyError, lengthError, minLengthError, maxLengthError, numberOnlyError, stringOnlyError, regExpError])
-
+  }, [
+    isEmptyError,
+    lengthError,
+    minLengthError,
+    maxLengthError,
+    numberOnlyError,
+    stringOnlyError,
+    regExpError,
+  ]);
 
   return {
     isEmptyError,
@@ -77,5 +101,5 @@ export const useValidate = (value: string | number, validations: ValidationType)
     lengthError,
     validate,
     isError,
-  }
-}
+  };
+};
